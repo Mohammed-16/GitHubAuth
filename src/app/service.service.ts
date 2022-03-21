@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
-const baseUrl = 'http://localhost:4200';
+const baseUrl = environment.baseUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,12 @@ export class ServiceService {
     };
     return this.http.post(`http://localhost:3000/oauth-callback`, params_Data, { headers: headers })
   }
+
+  UserToken(): Observable<any>{
+    return this.http.get(`http://localhost:3000/success`)
+    
+  }
+
+  
 }
 
